@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleszablon.css">
+        <!-- linkowanie Font'a Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..
+    900&family=Eczar:wght@400..800&family=Epilogue:ital,wght@0,100..900;1,100..
+    900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!-- m0onteserat font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Eczar:wght@400..800&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <main class="content">
+        <nav>
+            <div class="navL flex-column">
+                <a class="grynlogo oswald" href="index.html">GRYNMED</a>
+                <a class="pusty1 oswald" href="#">SZYMON GRYN</a>
+            </div>
+            
+            <div class="navR">
+                <li><a href="../index.html#o-mnie" class="funkcyjne oswald">O mnie</a></li>
+                <li><a href="../oferta.html" class="funkcyjne oswald">Oferty</a></li>
+                <li><a href="../szablon.html" class="funkcyjne oswald">Kalkulator bmi</a></li>
+                <li><a href="../index.html#kontakt" class="funkcyjne oswald">Kontakt</a></li>
+
+
+            </div>
+        </nav>
+
+
+
+        <div class="szablonowy">
+            <div class="calculator">
+        <h1 style="color: white;">Kalkulator Kalorii</h1>
+
+        <div class="gender-selection">
+            <button id="male" onclick="selectGender('male')">Mężczyzna</button>
+            <button id="female" onclick="selectGender('female')">Kobieta</button>
+        </div>
+
+        <label for="age">Wiek (lata):</label>
+        <input type="number" id="age" placeholder="Wpisz swój wiek">
+
+        <label for="weight">Masa ciała (kg):</label>
+        <input type="number" id="weight" placeholder="Wpisz swoją masę ciała">
+
+        <label for="height">Wzrost (cm):</label>
+        <input type="number" id="height" placeholder="Wpisz swój wzrost">
+
+        <label for="activity">Poziom aktywności fizycznej:</label>
+        <select id="activity">
+            <option value="1.3">Całkowity brak aktywności fizycznej</option>
+            <option value="1.4">Niewielka aktywność fizyczna</option>
+            <option value="1.6">Umiarkowany poziom aktywności fizycznej (3-4 treningi w tygodniu)</option>
+            <option value="1.75">Osoba aktywna (5-6 treningów w tygodniu)</option>
+            <option value="2.0">Osoba bardzo aktywna (co najmniej 7 treningów w tygodniu)</option>
+        </select>
+
+        <div class="goal-selection">
+            <label><input type="radio" name="goal" value="lose" id="lose"> Chcę schudnąć</label>
+            <label><input type="radio" name="goal" value="maintain" id="maintain"> Chcę zachować masę</label>
+            <label><input type="radio" name="goal" value="gain" id="gain"> Chcę przytyć</label>
+        </div>
+
+        <button onclick="calculateCalories()">Oblicz</button>
+        <div class="result" id="result"></div>
+        <div class="meal-plan" id="meal-plan"></div>
+    </div>
+
+    <script>
+        let gender = null;
+
+        function selectGender(selectedGender) {
+            gender = selectedGender;
+            document.getElementById('male').classList.remove('active');
+            document.getElementById('female').classList.remove('active');
+            document.getElementById(selectedGender).classList.add('active');
+        }
+
+        function calculateCalories() {
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            const goal = document.querySelector('input[name="goal"]:checked');
+            const resultDiv = document.getElementById('result');
+            const mealPlanDiv = document.getElementById('meal-plan');
+
+            if (!gender) {
+                resultDiv.textContent = 'Proszę wybrać płeć!';
+                mealPlanDiv.textContent = '';
+                return;
+            }
+
+            if (!age || !weight || !height || !activity || !goal) {
+                resultDiv.textContent = 'Proszę uzupełnić wszystkie pola!';
+                mealPlanDiv.textContent = '';
+                return;
+            }
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else if (gender === 'female') {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            let dailyCalories = bmr * activity;
+
+            if (goal.value === 'lose') {
+                dailyCalories -= 500; // Deficyt kaloryczny
+            } else if (goal.value === 'gain') {
+                dailyCalories += 500; // Nadwyżka kaloryczna
+            }
+
+            resultDiv.textContent = `Twoje dzienne zapotrzebowanie kaloryczne wynosi około ${dailyCalories.toFixed(2)} kcal.`;
+
+            const breakfast = (dailyCalories * 0.25).toFixed(2);
+            const lunch = (dailyCalories * 0.35).toFixed(2);
+            const dinner = (dailyCalories * 0.30).toFixed(2);
+            const snacks = (dailyCalories * 0.10).toFixed(2);
+
+            mealPlanDiv.innerHTML = `
+                <p>Rozkład kalorii na posiłki:</p>
+                <ul>
+                    <li>Śniadanie: ${breakfast} kcal</li>
+                    <li>Obiad: ${lunch} kcal</li>
+                    <li>Kolacja: ${dinner} kcal</li>
+                    <li>Przekąski: ${snacks} kcal</li>
+                </ul>
+            `;
+        }
+    </script>
+        </div>
+    </main>
+</body>
+</html>
