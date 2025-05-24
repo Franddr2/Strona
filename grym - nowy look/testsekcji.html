@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Współpraca | Minimal Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #000;
+      color: #e0f0ff;
+    }
+
+    header, footer {
+      background-color: #0a0a0a;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1, footer h1 {
+      color: #6bd0ff;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: #e0f0ff;
+      margin-left: 2rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #6bd0ff;
+    }
+
+    main {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(to bottom right, #000 0%, #0d1b2a 100%);
+    }
+
+    .content {
+      max-width: 800px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.03);
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(107, 208, 255, 0.2);
+    }
+
+    .content h2 {
+      font-size: 2rem;
+      color: #6bd0ff;
+      margin-bottom: 1rem;
+    }
+
+    .content p, .content li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .content ul li::before {
+      content: '\2022';
+      color: #6bd0ff;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LOGO</h1>
+    <nav>
+      <a href="#">Start</a>
+      <a href="#">O mnie</a>
+      <a href="#">Usługi</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content">
+      <h2>Czego oczekuję od Ciebie?</h2>
+      <p>Nie oczekuję perfekcji – oczekuję zaangażowania.<br>
+         Nie musisz wiedzieć wszystkiego – wystarczy, że jesteś gotów się uczyć.<br>
+         Nie chodzi o to, by wszystko zmienić od razu – ale by zacząć i iść krok po kroku.</p>
+
+      <h2>Czego potrzebuję od Ciebie jako klienta?</h2>
+      <ul>
+        <li>Otwartości na zmiany – nawet te małe potrafią dać wielkie efekty</li>
+        <li>Szczerości i zaufania – to podstawa dobrej współpracy</li>
+        <li>Gotowości do działania – nie musisz być zmotywowany codziennie, ale potrzebujesz chęci</li>
+        <li>Cierpliwości – bo prawdziwe zmiany wymagają czasu</li>
+        <li>Konsekwencji – bo to właśnie ona prowadzi do trwałych rezultatów</li>
+      </ul>
+
+      <p>Współpraca ze mną to nie chwilowa dieta. To proces, w którym uczysz się lepiej jeść,
+         słuchać swojego ciała i działać w zgodzie ze sobą. Ja daję Ci wiedzę, narzędzia i wsparcie –
+         ale to Ty jesteś głównym bohaterem tej zmiany.</p>
+
+      <p>Razem możemy osiągnąć naprawdę dużo – jeśli tylko jesteś gotowy dać z siebie choć trochę.
+         Resztą zajmiemy się wspólnie.</p>
+    </section>
+  </main>
+
+  <footer>
+    <h1>LOGO</h1>
+    <nav>
+      <a href="#">Start</a>
+      <a href="#">O mnie</a>
+      <a href="#">Usługi</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </footer>
+</body>
+</html>
