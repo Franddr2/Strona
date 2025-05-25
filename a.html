@@ -2,109 +2,124 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Scroll Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Przepis i Artykuł</title>
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    html, body {
-      height: 100%;
+    body {
       font-family: Arial, sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?kitchen,food') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.6;
     }
 
-    .section {
-      height: 100vh;
+    .container {
+      padding: 1rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: white;
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    .text {
-      font-size: 3rem;
-      color: #222;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+    .block {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      border-radius: 10px;
     }
 
-    .text.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .testowy{
-      background-color: #ff5757;
-      width: 100%;
-      height: 100vh;
-      /* opacity: 50%; */
-      align-self: center;
-      justify-self: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: change 10s infinite ease-in-out;
-      /* background-image: ; */
-      background-size:contain;
-      /* background: fixed; */
-      /* background-position: 100%; */
-      /* background-attachment: fixed; */
-      /* background-position: 100% 100% ; */
-
-
-
-      
-    }
-    @keyframes change{
-    100%{
-        background-image: url(animowane/gory.jpg);   
+    h2 {
+      margin-bottom: 0.5rem;
     }
 
-    100%{
-        background-image: url(animowane/kajak.jpg);   
+    img.responsive {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
     }
-    100%{
-        background-image: url(animowane/podroz.jpg);   
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 1rem;
+      text-align: center;
     }
-    100%{
-        background-image: url(animowane/rower.jpg);   
+
+    footer button {
+      margin: 0.3rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff9800;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
     }
-    100%{
-        background-image: url(animowane/warior.jpg);   
+
+    footer button:hover {
+      background-color: #e68900;
     }
-    100%{
-        background-image: url(animowane/wspinaczka.jpg);   
+
+    @media (max-width: 768px) {
+      .container {
+        gap: 1rem;
+      }
+      .block {
+        padding: 0.8rem;
+      }
     }
-}
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="block" id="zdjecie">
+      <h2>Zdjęcie kulinarne</h2>
+      <img src="https://source.unsplash.com/800x400/?pancakes" alt="Pancakes" class="responsive">
+    </div>
 
-  <section class="section">
-    <div class="text visible">siema</div>
-  </section>
+    <div class="block" id="przepis">
+      <h2>Przepis na naleśniki</h2>
+      <ul>
+        <li>1 szklanka mleka</li>
+        <li>1 szklanka mąki</li>
+        <li>2 jajka</li>
+        <li>1 łyżka oleju</li>
+        <li>Szczypta soli</li>
+      </ul>
+      <p>Wszystkie składniki wymieszaj dokładnie mikserem. Smaż cienkie naleśniki na rozgrzanej patelni z odrobiną oleju. Podawaj z ulubionym nadzieniem.</p>
+    </div>
 
-  <section class="section">
-    <div class="text" id="helloText">Hello world</div>
-  </section>
-  <div class="testowy">a</div>
-  <script>
-    // Obserwujemy element helloText
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // Przestajemy obserwować po aktywacji, żeby nie powtarzać
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+    <div class="block" id="artykul">
+      <h2>Artykuł: Czy mięso to podstawa?</h2>
+      <p>Dieta carnivore, oparta wyłącznie na mięsie i produktach odzwierzęcych, zyskuje na popularności. Zwolennicy twierdzą, że przynosi wiele korzyści zdrowotnych.</p>
+      <h3>Zalety:</h3>
+      <ul>
+        <li>Wysokie spożycie białka</li>
+        <li>Brak cukrów prostych</li>
+        <li>Redukcja stanów zapalnych u niektórych osób</li>
+      </ul>
+      <h3>Wady:</h3>
+      <ul>
+        <li>Brak błonnika i witamin z roślin</li>
+        <li>Potencjalne problemy z nerkami</li>
+        <li>Brak długoterminowych badań</li>
+      </ul>
+    </div>
 
-    const helloText = document.getElementById('helloText');
-    observer.observe(helloText);
-  </script>
+    <div class="block" id="kontakt">
+      <h2>Kontakt lub dodatkowe info</h2>
+      <p>Możesz zostawić komentarz pod artykułem lub wysłać wiadomość przez formularz kontaktowy (niewidoczny w tej wersji).</p>
+    </div>
+  </div>
 
+  <footer>
+    <button onclick="document.getElementById('zdjecie').scrollIntoView({ behavior: 'smooth' })">Zdjęcie</button>
+    <button onclick="document.getElementById('przepis').scrollIntoView({ behavior: 'smooth' })">Przepis</button>
+    <button onclick="document.getElementById('artykul').scrollIntoView({ behavior: 'smooth' })">Artykuł</button>
+    <button onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Kontakt</button>
+  </footer>
 </body>
 </html>
