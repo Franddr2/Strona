@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style-new.css">
+    <!-- linkowanie Font'a Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..
+    900&family=Eczar:wght@400..800&family=Epilogue:ital,wght@0,100..900;1,100..
+    900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!-- m0onteserat font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Eczar:wght@400..800&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    
+    <nav>
+        <div class="navL">
+            <a class="grynlogo oswald" href="index.html">GRYNMED</a>
+            <a class="pusty1 oswald" href="#">SZYMON GRYN</a>
+        </div>
+        
+        <div class="navR">
+            <li><a href="../index.html#o-mnie" class="funkcyjne oswald">O mnie</a></li>
+            <li><a href="oferta.html" class="funkcyjne oswald">Oferty</a></li>
+            <li><a href="../szablon.html" class="funkcyjne oswald">Kalkulator bmi</a></li>
+            <li><a href="../index.html#kontakt" class="funkcyjne oswald">Kontakt</a></li>
+
+
+        </div>
+    </nav>
+
+    <div class="splitNav"></div>
+
+
+
+    <footer class="flex-row">
+            <div class="L">
+                <div class="flex-column">
+                    <a class="grynlogo" href="index.html">GRYNMED</a>
+                    <a class="pusty1" href="#">SZYMON GRYN</a>
+                </div>
+            </div>
+            <div class="R">
+                CopyWriting@ 2025 wszystkie prawa zastrzeżone
+                <a href="pol.html">Polityka prywatności</a>
+                <a href="reg.html">Regulamin</a>
+
+            </div>
+        </footer>
+    <script>
+        const navSRC = document.querySelector('nav');
+        window.addEventListener('scroll', ()=> {
+            if (window.scrollY >= 56){
+                navSRC.classList.add('navbar-scrolled');
+            }else  if (window.scrollY < 56){
+                navSRC.classList.remove('navbar-scrolled');
+            }
+        });
+
+
+    </script>
+</body>
+</html>
